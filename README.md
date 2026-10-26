@@ -107,6 +107,8 @@ JSON形式とYAML形式のテンプレートを用意することで、CloudForm
 | CloudFormation内の `PolicyDocument` | IAM Access Analyzer | エラーなし |
 | `tests/trust-policy.json` | IAM Access Analyzer（AWS CLI） | 指摘事項なし |
 | `cloudformation/iam-role.json` | CloudFormation `validate-template` | 検証成功 |
+| `cloudformation/iam-role.yaml` | CloudFormation `validate-template` | 検証成功 |
+| JSON版とYAML版の設定比較 | テンプレート内容の比較 | 主要な設定内容が一致 |
 | S3読み取り操作 | IAM Policy Simulator | `s3:GetObject` が許可されることを確認 |
 
 信頼ポリシーの検証では、AWS CLIの `validate-policy` コマンドに `--policy-type RESOURCE_POLICY` と `--validate-policy-resource-type AWS::IAM::AssumeRolePolicyDocument` を指定しました。
