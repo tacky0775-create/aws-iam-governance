@@ -1,0 +1,45 @@
+{
+    "AWSTemplateFormatVersion" : "2010-09-09",
+    "Description" : "IAM Role for EC2 to read s3 Object",
+    "Resources" : {
+        "ReportsReadRole" : {
+            "Type" : "AWS::IAM::Role",
+            "Properties" : {
+               "RoleName" : "EC2-s3-IAMRole",
+               "AssumeRolePolicyDocument" : {
+                "Version" : "2012-10-17",
+                "Statement" : [
+                    {
+                        "Effect" : "Allow",
+                        "Principal" : {
+                            "Service" : [
+                                "ec2.amazonaws.com"
+                            ]
+                        },
+                        "Action" : "sts:AssumeRole"
+                    }
+                ]    
+               },
+                 "Policies" : [
+                            {
+                                "PolicyName" : "EC2S3ReadPolicy",
+                                "PolicyDocument" : {
+                                    "Version" : "2012-10-17",
+                                    "Statement" : [
+                                        {
+                                            "Effect" : "Allow",
+                                            "Action" : "s3:GetObject",
+                                            "Resource" : "arn:aws:s3:::example-bucket/reports/2026/*"
+                                        }
+                                    ]
+                                    
+                                }
+                                
+                            }
+                            
+                        ]
+                        
+                    }
+            } 
+        }
+    }
